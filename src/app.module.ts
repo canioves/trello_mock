@@ -9,6 +9,7 @@ import { Board } from './boards/boards.model';
 import { Card } from './cards/cards.model';
 import { Comment } from './comments/comments.model';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -34,8 +35,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     BoardsModule,
     CardsModule,
     CommentsModule,
+    AuthModule,
   ],
   controllers: [],
-  providers: [ConfigService],
+  providers: [],
 })
 export class AppModule {}
