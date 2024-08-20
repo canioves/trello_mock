@@ -1,5 +1,8 @@
 import { DataTypes } from 'sequelize';
-import { Column, Model, Table } from 'sequelize-typescript';
+import { Column, HasMany, Model, Table } from 'sequelize-typescript';
+import { Board } from 'src/boards/boards.model';
+import { Card } from 'src/cards/cards.model';
+import { Comment } from 'src/comments/comments.model';
 
 interface UserCreateAttrs {
   email: string;
@@ -28,4 +31,13 @@ export class User extends Model<User, UserCreateAttrs> {
     allowNull: false,
   })
   password: string;
+
+  @HasMany(() => Board)
+  boards: Board[];
+
+  @HasMany(() => Card)
+  cards: Card[];
+
+  @HasMany(() => Comment)
+  comments: Comment[];
 }
